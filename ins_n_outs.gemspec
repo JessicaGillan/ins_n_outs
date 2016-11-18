@@ -36,4 +36,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "guard", "~> 2.14"
   spec.add_development_dependency "guard-shell", "~> 0.7.1"
   spec.add_development_dependency "guard-rspec", "~> 4.7.3"
+  spec.add_development_dependency "rdoc"
+  spec.add_development_dependency "pry-byebug"
+  spec.add_development_dependency "pry"
 end
