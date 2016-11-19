@@ -1,6 +1,4 @@
 MethodData = Struct.new(:container, :name, :input_types, :output_types)
-# [{name: arg_name, type: arg_type, default: default_test_val},
-#   {name: arg_name, type: arg_type, default: default_test_val} ...]
 
 class CommentParser
   REGEX = { token: /#\s*DELIMITER:\s*(\S+)/,
@@ -54,11 +52,11 @@ class CommentParser
     # ** my_test, ins: String, outs: Bool
     def populate_method_data(specifications)
       specifications.map do |spec|
-        method_data = @method_data_factory.new
-        method_data.container = container
-        method_data.name = find_match(spec, tkn_regex[:name])[0]
-        method_data.input_types = separate_types( find_match(spec, REGEX[:ins]) )
-        method_data.output_types = separate_types( find_match(spec, REGEX[:outs]) )
+        method_data               = @method_data_factory.new
+        method_data.container     = container
+        method_data.name          = find_match(spec, tkn_regex[:name])[0]
+        method_data.input_types   = separate_types( find_match(spec, REGEX[:ins]) )
+        method_data.output_types  = separate_types( find_match(spec, REGEX[:outs]) )
         method_data
       end
     end
@@ -83,9 +81,3 @@ class CommentParser
     end
 
 end
-
-
-# ["# ** my_test, ins: String bool string, outs: Bool array"]
-# #<MatchData "# ** my_test," 1:"my_test,">
-# #<MatchData "ins: String bool string," 1:"String bool string" 2:nil 3:nil>
-# #<MatchData "outs: Bool array" 1:nil 2:nil 3:"Bool array">

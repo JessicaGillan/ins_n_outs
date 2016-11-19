@@ -1,5 +1,5 @@
 class DocLoader
-  def self.load(file_path)
+  def self.load(file_path, spec_path)
     raise ArgumentError unless file_path.is_a? String
     raise ArgumentError unless File.exist?(file_path)
 
